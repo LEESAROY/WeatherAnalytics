@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --brand: #4f46e5;
+    /* indigo */
+}
+
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.nav-active {
+    color: var(--brand);
+    font-weight: 700;
+}
+
+
+.stat-card {
+    @apply bg-white rounded-xl shadow p-4;
+}
