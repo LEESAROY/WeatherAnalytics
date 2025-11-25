@@ -1,14 +1,13 @@
-const geocodeBase = 'https://nominatim.openstreetmap.org/search';
+const geocodeBase = 'https://geocoding-api.open-meteo.com/v1/search';
 const weatherBase = 'https://api.open-meteo.com/v1/forecast';
 
 export async function fetchWeather(city = 'Toronto') {
     try {
-        const geoRes = await fetch(`${geocodeBase}?q=${city}&format=json&limit=1`);
+        const geoRes = await fetch(`${geocodeBase}?name=${encodeURIComponent(city)}&count=1`);
         const geoData = await geoRes.json();
-        if (!geoData[0]) throw new Error('City not found');
+        if (!geoData.results || !geoData.results[0]) throw new Error('City not found');
 
-        const lat = geoData[0].lat;
-        const lon = geoData[0].lon;
+        const { latitude: lat, longitude: lon } = geoData.results[0];
 
         const weatherRes = await fetch(`${weatherBase}?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,precipitation`);
         const weatherData = await weatherRes.json();
