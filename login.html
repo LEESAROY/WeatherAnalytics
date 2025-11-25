@@ -1,77 +1,100 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Login - Weather Analytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles/main.css">
-</head>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
 
-<body class="bg-gradient-to-br from-indigo-50 to-blue-100 
-             dark:from-gray-900 dark:to-gray-800
-             dark:text-white text-slate-900 
-             antialiased transition-colors duration-300">
-
-    <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur z-40 shadow">
-        <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-            <div class="flex items-center gap-3">
-                <img src="assets/logo.svg" alt="logo" class="h-8 w-8" />
-                <span class="font-semibold">Weather Analytics</span>
-            </div>
-        </div>
+  <body
+    class="bg-gradient-to-br from-indigo-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 dark:text-white text-slate-900 antialiased transition-colors duration-300"
+  >
+    <header
+      class="fixed top-0 left-0 w-full bg-white/30 dark:bg-gray-900/30 backdrop-blur z-40 shadow-sm"
+    >
+      <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+        <a href="index.html" class="flex items-center gap-3">
+          <img
+            src="assets/logo.svg"
+            alt="logo"
+            class="h-8 w-8 drop-shadow-md"
+          />
+          <span class="font-semibold text-lg md:text-xl"
+            >Weather Analytics</span
+          >
+        </a>
+        <button
+          id="themeToggle"
+          class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-xl shadow hover:scale-110 transition"
+        >
+          🌙
+        </button>
+      </div>
     </header>
 
-    <header class="fixed top-0 left-0 w-full bg-white/30 dark:bg-gray-900/30 backdrop-blur z-40 shadow-sm">
-        <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-            <div class="flex items-center gap-3">
-                <img src="assets/logo.svg" alt="logo" class="h-8 w-8 drop-shadow-md" />
-                <span class="font-semibold text-lg">Weather Analytics</span>
-            </div>
-            <!-- Theme Toggle Button -->
-            <button id="themeToggle"
-                class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-xl shadow hover:scale-110 transition">
-                🌙
+    <main class="pt-28 flex items-center justify-center min-h-screen px-4">
+      <section
+        class="w-full max-w-md p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg"
+      >
+        <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-center">
+          Sign in to Weather Analytics
+        </h2>
+        <form id="loginForm" class="space-y-4">
+          <div id="formError" class="text-red-500 text-sm mb-2 hidden"></div>
+          <div>
+            <label class="text-sm block mb-1">Email</label>
+            <input
+              id="email"
+              class="w-full rounded-md border p-2 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              type="email"
+              required
+            />
+          </div>
+          <div>
+            <label class="text-sm block mb-1">Password</label>
+            <input
+              id="password"
+              class="w-full rounded-md border p-2 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+              type="password"
+              required
+              minlength="6"
+            />
+          </div>
+          <div
+            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+          >
+            <button
+              class="w-full sm:w-auto px-4 py-2 rounded-md bg-indigo-600 text-white"
+              type="submit"
+            >
+              Sign in
             </button>
-        </div>
-    </header>
-
-    <main class="pt-20 flex items-center justify-center min-h-screen">
-        <section class="max-w-md mx-auto mt-12 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
-            <h2 class="text-2xl font-semibold mb-4">Sign in to Weather Analytics</h2>
-            <form id="loginForm" class="space-y-4">
-                <div id="formError" class="text-red-500 text-sm mb-2 hidden"></div>
-                <div>
-                    <label class="text-sm block mb-1">Email</label>
-                    <input id="email" class="w-full rounded-md border p-2 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
-                        type="email" required />
-                </div>
-                <div>
-                    <label class="text-sm block mb-1">Password</label>
-                    <input id="password" class="w-full rounded-md border p-2 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
-                        type="password" required minlength="6" />
-                </div>
-                <div class="flex items-center justify-between">
-                    <button class="px-4 py-2 rounded-md bg-indigo-600 text-white" type="submit">Sign in</button>
-                    <a href="index.html" class="text-sm text-slate-500">Back</a>
-                </div>
-            </form>
-            <p class="text-xs text-slate-400 mt-3">Demo: demo@company.com / Demo123!</p>
-        </section>
+            <a
+              href="index.html"
+              class="text-sm text-slate-500 text-center sm:text-left"
+              >Back</a
+            >
+          </div>
+        </form>
+        <p class="text-xs text-slate-400 mt-3 text-center">
+          Demo: demo@company.com / Demo123!
+        </p>
+      </section>
     </main>
 
     <script>
-        tailwind.config = {
-            darkMode: 'class'
-        }
+      tailwind.config = {
+        darkMode: "class",
+      };
     </script>
     <script src="./scripts/theme.js"></script>
+    <script src="./scripts/mobilemenu.js"></script>
     <script type="module">
-        import { initAuth } from './scripts/auth.js';
-        initAuth();
+      import { initAuth } from "./scripts/auth.js";
+      initAuth();
     </script>
     <script type="module" src="./scripts/router.js"></script>
-</body>
-
+  </body>
 </html>
